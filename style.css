@@ -1,0 +1,274 @@
+@charset "utf-8";
+/* CSS Document */
+
+:root{
+  --accent: #ffb400;
+  --dark: rgba(0,0,0,0.6);
+  --glass: rgba(255,255,255,0.06);
+  --max: 1200px;
+  --radius: 8px;
+  --safe-pad: 20px;
+  --font-stack: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-stack);
+  color:#fff;
+  background:#0b0b0b;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Video background */
+.video-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter: brightness(.45) saturate(.95);
+}
+
+/* container */
+.container{
+  width:calc(100% - 2*var(--safe-pad));
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 var(--safe-pad);
+}
+
+/* Header */
+.site-header{
+  position:fixed;
+  inset-inline:0;
+  top:0;
+  z-index:10;
+  padding:14px 0;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* brand */
+.brand{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo{height:46px; width:auto; display:block}
+.brand-text .company{display:block; font-weight:700; letter-spacing:.6px}
+.brand-text .what{display:block; font-size:.78rem; opacity:.85}
+
+/* nav */
+.main-nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  align-items:center;
+  margin:0;
+  padding:0;
+}
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  opacity:.95;
+  transition:color .18s, opacity .18s;
+}
+.main-nav a:hover{color:var(--accent); opacity:1}
+
+/* small controls */
+.nav-toggle, .search-btn{
+  display:none;
+  background:transparent;
+  border:0;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* Search box */
+.search-box{
+  position:fixed;
+  top:72px;
+  right:var(--safe-pad);
+  z-index:12;
+  background:rgba(0,0,0,0.6);
+  padding:8px;
+  border-radius:6px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.search-box input{
+  background:transparent;
+  border:0;
+  outline:0;
+  color:#fff;
+  padding:8px;
+  width:220px;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  padding-top:100px;
+}
+.hero-inner{
+  text-align:center;
+  padding:120px 0 80px;
+  z-index:2;
+}
+.hero h1{
+  font-size: clamp(32px, 6vw, 72px);
+  margin:0 0 10px;
+  line-height:1.02;
+  letter-spacing:-1px;
+  text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+.hero .sub{
+  font-size:clamp(14px,1.5vw,18px);
+  opacity:.9;
+  margin-bottom:18px;
+}
+
+/* CTAs */
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  margin-right:10px;
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent),#ff9f00);
+  color:#111;
+}
+.btn.ghost{
+  background:transparent;
+  border:2px solid rgba(255,255,255,0.14);
+  color:#fff;
+}
+
+/* hero gradient overlay bottom */
+.hero-gradient{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:30vh;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+  z-index:1;
+}
+
+/* sections */
+.section{
+  padding:72px 0;
+  color:#fff;
+}
+.about p{max-width:780px}
+
+/* cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:20px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  padding:20px;
+  border-radius:12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.card h3{margin-bottom:8px}
+
+/* capabilities */
+.cap-list{display:flex;flex-wrap:wrap;gap:12px;list-style:none;padding:0;margin:12px 0 0}
+.cap-list li{background:var(--glass);padding:10px 14px;border-radius:8px;font-weight:600}
+
+/* projects */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.project{height:180px; overflow:hidden;border-radius:10px; background:#222; display:flex; align-items:flex-end}
+.project img{width:100%;height:100%;object-fit:cover;display:block; transform:scale(1.02)}
+.project figcaption{background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7)); padding:10px; width:100%; color:#fff}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 360px; gap:28px; align-items:start}
+.contact-form label{display:block;margin-bottom:12px}
+.contact-form input, .contact-form textarea{
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:0;
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+  outline:2px solid transparent;
+}
+.form-actions{display:flex;gap:12px;margin-top:12px}
+.form-msg{margin-top:10px;color:var(--accent)}
+
+/* footer */
+.site-footer{padding:18px 0;background:linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.8));margin-top:40px}
+.site-footer p{margin:0}
+
+/* responsive */
+@media (max-width:900px){
+  .cards{grid-template-columns:1fr}
+  .project-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .main-nav{display:none}
+  .nav-toggle,.search-btn{display:inline-block}
+}
+@media (max-width:560px){
+  .brand-text .company{font-size:1rem}
+  .hero-inner{padding:90px 0 40px}
+  .logo{height:36px}
+  .project-grid{grid-template-columns:1fr}
+}
+
+/* Smooth fade-in animations */
+@keyframes fadeUp { /* NEW */
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeIn { /* NEW */
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Hero animation styles */
+.hero-inner { /* NEW */
+  animation: fadeUp 1s ease-out forwards;
+  opacity: 0;
+}
+.hero-inner.animated { /* NEW */
+  opacity: 1;
+}
+
+/* Scroll reveal sections */
+.section, .project, .card, .cap-list li, .contact-form, .contact-info { /* NEW */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.section.visible, .project.visible, .card.visible, .cap-list li.visible, .contact-form.visible, .contact-info.visible { /* NEW */
+  opacity: 1;
+  transform: translateY(0);
+}
+

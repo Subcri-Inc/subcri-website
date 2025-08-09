@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Subcri | Industrial Fabricator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Video background -->
+  <video id="bgVideo" class="video-bg" autoplay muted loop playsinline>
+    <source src="Fe - iron - INDUSTRIAL CINEMATIC FILM.mp4" type="video/mp4" />
+    <!-- fallback image -->
+  </video>
+
+  <!-- Site header / nav -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="subcri white 2.PNG" alt="Subcri logo" class="logo" />
+        <div class="brand-text">
+          <span class="company">Subcri</span>
+          <small class="what">Industrial Fabricator</small>
+        </div>
+      </div>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu">☰</button>
+
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero-inner container">
+        <h1>Moulding Ideas,<br />Forging the Future.</h1>
+        <p class="sub">Moulded Rubber • Metal Fabrication • Engineering Plastics</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#services">Our Services</a>
+          <a class="btn ghost" href="#projects">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about container">
+      <h2>About Subcri</h2>
+      <p>
+        Subcri is an industrial fabricator specialising in moulded rubber products,
+        precision metal fabrication and engineering-grade plastics. We partner with
+        manufacturers and OEMs to turn concepts into durable parts and long-lasting solutions.
+      </p>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Moulded Rubber Products</h3>
+            <p>Injection & compression moulding, custom compounds, vibration mounts, seals and precision rubber parts engineered for performance.</p>
+          </article>
+
+          <article class="card">
+            <h3>Metal Fabrication</h3>
+            <p>Cutting, bending, welding, CNC machining and surface treatments for structural and precision metal components.</p>
+          </article>
+
+          <article class="card">
+            <h3>Engineering Plastics</h3>
+            <p>High-performance thermoplastics and composite fabrication for components that require strength, chemical resistance and low weight.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section id="capabilities" class="section capabilities container">
+      <h2>Capabilities & Equipment</h2>
+      <ul class="cap-list">
+        <li>CNC Milling & Turning</li>
+        <li>Compression & Injection Moulding</li>
+        <li>Laser Cutting & Waterjet</li>
+        <li>Robotic Welding & MIG/TIG</li>
+        <li>Tooling & Prototyping</li>
+        <li>Quality Inspection (CMM, QA Processes)</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h2>Selected Projects</h2>
+        <div class="project-grid">
+          <figure class="project">
+            <img src="proj1.jpg" alt="Project 1" />
+            <figcaption><strong>Vibration Mounts</strong><span>Automotive OEM supply</span></figcaption>
+          </figure>
+          <figure class="project">
+            <img src="proj2.jpg" alt="Project 2" />
+            <figcaption><strong>Steel Frames</strong><span>Industrial assembly line</span></figcaption>
+          </figure>
+          <figure class="project">
+            <img src="proj3.jpg" alt="Project 3" />
+            <figcaption><strong>Plastic Housing</strong><span>Electronics enclosures</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact container">
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <!-- UPDATED FORM WITH FORMSPREE -->
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/mwpqavzr" method="POST">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            <span>Company</span>
+            <input type="text" name="company" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Send Message</button>
+            <button type="reset" class="btn ghost">Reset</button>
+          </div>
+        </form>
+
+        <div class="contact-info">
+          <h3>Head Office</h3>
+          <address>
+            Subcri Industrial Fabricator<br />
+            Mambog IV<br />
+            Bacoor, Cavite<br />
+            <a href="tel:+639267419350">0926 741 9350</a><br />
+            <a href="tel:+639661940813">096 194 8013</a><br />
+            <a href="mailto:subcri.inc@gmail.com">subcri.inc@gmail.com</a>
+          </address>
+          <h4>Factory Hours</h4>
+          <p>Mon–Fri: 8:00am — 5:00pm</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Subcri Industrial Fabricator — All rights reserved.</p>
+      <small>Designed & built for industrial excellence.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
