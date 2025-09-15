@@ -271,4 +271,60 @@ body{
   opacity: 1;
   transform: translateY(0);
 }
+/* Clients Section */
+.clients {
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.4); /* optional overlay if you keep video/bg */
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.client-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.client-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.client-card img {
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.client-card p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.client-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
 

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Subcri Admin Panel</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    h1, h2 { color: #333; }
+    .hidden { display: none; }
+    form { background: white; padding: 15px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    input, textarea, button { width: 100%; padding: 8px; margin: 5px 0; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+</style>
+</head>
+<body>
+
+<h1>Subcri Admin Panel</h1>
+
+<!-- Login Form -->
+<div id="loginSection">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Admin Email" required>
+        <input type="password" id="password" placeholder="Admin Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<!-- Main Admin Section -->
+<div id="adminSection" class="hidden">
+
+    <!-- Project Upload -->
+    <h2>Add New Project</h2>
+    <form id="projectForm" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Project Title" required>
+        <textarea name="desc" placeholder="Project Description" required></textarea>
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Upload Project</button>
+    </form>
+
+    <!-- Capabilities Editor -->
+    <h2>Edit Capabilities</h2>
+    <form id="capabilitiesForm">
+        <textarea id="capabilitiesList" placeholder="One capability per line"></textarea>
+        <button type="submit">Save Capabilities</button>
+    </form>
+
+</div>
+
+<script>
+const API_BASE = "http://localhost:5000"; // Change to your backend URL when deployed
+let authToken = "";
+
+// Login
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    
+    const res = await fetch(`${API_BASE}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        authToken = data.token;
+        document.getElementById("loginSection").classList.add("hidden");
+        document.getElementById("adminSection").classList.remove("hidden");
+        loadCapabilities();
+    } else {
+        alert(data.message || "Login failed");
+    }
+});
+
+// Upload Project
+document.getElementById("projectForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const res = await fetch(`${API_BASE}/projects`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${authToken}` },
+        body: formData
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        alert("✅ Project uploaded successfully!");
+        e.target.reset();
+    } else {
+        alert(data.message || "Failed to upload project");
+    }
+});
+
+// Load Capabilities
+async function loadCapabilities() {
+    const res = await fetch(`${API_BASE}/capabilities`);
+    const data = await res.json();
+    if (data.items) {
+        document.getElementById("capabilitiesList").value = data.items.join("\n");
+    }
+}
+
+// Save Capabilities
+document.getElementById("capabilitiesForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const items = document.getElementById("capabilitiesList").value.split("\n").map(i => i.trim()).filter(i => i);
+
+    const res = await fetch(`${API_BASE}/capabilities`, {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify({ items })
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        alert("✅ Capabilities updated successfully!");
+    } else {
+        alert(data.message || "Failed to update capabilities");
+    }
+});
+</script>
+
+</body>
+</html>
+	
